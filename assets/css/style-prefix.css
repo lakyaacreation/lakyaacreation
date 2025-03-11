@@ -1472,7 +1472,6 @@ body::-webkit-scrollbar-thumb:hover {
   -ms-grid-columns: 1fr;
   grid-template-columns: 1fr;
   gap: 25px;
-  max-height: 450px;
   /* Adjust the height as needed */
   overflow-y: auto;
 }
