@@ -53,9 +53,12 @@ function filterCategory(category) {
 
 
 
+let currentCategory = '';
+
 function filterCategory(category) {
     const boxes = document.querySelectorAll('.box');
     const bookButton = document.getElementById('serviceBookButton');
+    currentCategory = category;
     
     boxes.forEach(box => {
         if (category === 'all') {
@@ -68,7 +71,7 @@ function filterCategory(category) {
                 box.style.display = 'none';
             }
             
-            // Show book button for specific categories
+            // Show button only for specific categories
             if (category === 'iron' || category === 'kunjam' || category === 'aari') {
                 bookButton.style.display = 'block';
             } else {
@@ -77,6 +80,19 @@ function filterCategory(category) {
         }
     });
 }
+
+function downloadServicePdf() {
+    const pdfLinks = {
+        'aari': 'https://lakyaacreation.github.io/lakyaacreation/Happy.pdf_compressed.pdf',
+        'kunjam': 'https://lakyaacreation.github.io/lakyaacreation/1500%20LKR.pdf_compressed.pdf',
+        'iron': 'https://lakyaacreation.github.io/lakyaacreation/500LKR.pdf_compressed.pdf'
+    };
+    
+    if (currentCategory && pdfLinks[currentCategory]) {
+        window.open(pdfLinks[currentCategory], '_blank');
+    }
+}
+
 
 
 
