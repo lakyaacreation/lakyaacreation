@@ -53,12 +53,12 @@ function filterCategory(category) {
 
 
 
-
+let currentCategory = '';
 
 function filterCategory(category) {
     const boxes = document.querySelectorAll('.box');
     const bookButton = document.getElementById('serviceBookButton');
-    
+    currentCategory = category;
     
     boxes.forEach(box => {
         if (category === 'all') {
