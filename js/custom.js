@@ -81,7 +81,7 @@ function downloadServicePdf() {
     };
     
     if (currentCategory && pdfLinks[currentCategory]) {
-        window.open(pdfLinks[currentCategory], '_blank');
+      window.location.href = pdfLinks[currentCategory];
     }
 }
 
