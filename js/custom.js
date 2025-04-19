@@ -36,17 +36,7 @@ $('.slick_slider_nav').slick({
 
 
 
-function filterCategory(category) {
-  let boxes = document.querySelectorAll('.box');
 
-  boxes.forEach(box => {
-    if (box.getAttribute('data-category') === category || category === 'all') {
-      box.style.display = "block"; // Show relevant boxes
-    } else {
-      box.style.display = "none"; // Hide others
-    }
-  });
-}
 
 
 
