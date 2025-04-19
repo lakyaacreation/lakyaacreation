@@ -1,3 +1,5 @@
+let currentCategory = '';
+
 // to get current year
 function getYear() {
   var currentDate = new Date();
@@ -43,7 +45,7 @@ $('.slick_slider_nav').slick({
 
 
 
-let currentCategory = '';
+
 
 function filterCategory(category) {
     const boxes = document.querySelectorAll('.box');
