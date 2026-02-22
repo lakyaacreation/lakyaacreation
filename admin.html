@@ -599,6 +599,7 @@
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const data = JSON.parse(e.postData.contents);
   const sheet = ss.getSheetByName(data.sheet);
+  if (!sheet) return ContentService.createTextOutput(JSON.stringify({status:'error',msg:'Sheet not found'})).setMimeType(ContentService.MimeType.JSON);
   sheet.appendRow(data.row);
   return ContentService
     .createTextOutput(JSON.stringify({status:'ok'}))
@@ -608,7 +609,12 @@
 function doGet(e) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const sheetName = e.parameter.sheet;
+  const callback = e.parameter.callback;
   const sheet = ss.getSheetByName(sheetName);
+  if (!sheet) {
+    const out = JSON.stringify([]);
+    return ContentService.createTextOutput(callback ? callback + '(' + out + ')' : out).setMimeType(ContentService.MimeType.JAVASCRIPT);
+  }
   const rows = sheet.getDataRange().getValues();
   const headers = rows[0];
   const records = rows.slice(1).map(r => {
@@ -616,9 +622,11 @@ function doGet(e) {
     headers.forEach((h,i) => obj[h] = r[i]);
     return obj;
   });
-  return ContentService
-    .createTextOutput(JSON.stringify(records))
-    .setMimeType(ContentService.MimeType.JSON);
+  const json = JSON.stringify(records);
+  // Support JSONP for cross-origin requests
+  const output = callback ? callback + '(' + json + ')' : json;
+  const mime = callback ? ContentService.MimeType.JAVASCRIPT : ContentService.MimeType.JSON;
+  return ContentService.createTextOutput(output).setMimeType(mime);
 }</div>
             </div>
           </div>
@@ -795,20 +803,43 @@ async function uploadToCloudinary(file) {
 // ============================================================
 async function writeToSheet(sheet, row) {
   const url = CFG.scriptUrl || 'https://script.google.com/macros/s/AKfycbyOU45K7Ptalf-W0yWuaS46G0CfNkkHQqjPeRhokhOeWU5ldC3At9aH9O_CJW9T-7qV/exec';
-  const res = await fetch(url, {
+  // Use no-cors + text/plain to avoid CORS preflight block
+  await fetch(url, {
     method: 'POST',
+    mode: 'no-cors',
     body: JSON.stringify({ sheet, row }),
-    headers: { 'Content-Type': 'application/json' }
+    headers: { 'Content-Type': 'text/plain' }
   });
-  if (!res.ok) throw new Error('Failed to write to Google Sheets');
-  return await res.json();
+  // no-cors hides the response — we trust it worked
 }
 
-async function readFromSheet(sheet) {
-  const url = CFG.scriptUrl || 'https://script.google.com/macros/s/AKfycbyOU45K7Ptalf-W0yWuaS46G0CfNkkHQqjPeRhokhOeWU5ldC3At9aH9O_CJW9T-7qV/exec';
-  const res = await fetch(`${url}?sheet=${sheet}`);
-  if (!res.ok) throw new Error('Failed to read from Google Sheets');
-  return await res.json();
+function readFromSheet(sheet) {
+  // JSONP trick — bypasses CORS for GET requests from GitHub Pages
+  return new Promise(function(resolve, reject) {
+    const url = CFG.scriptUrl || 'https://script.google.com/macros/s/AKfycbyOU45K7Ptalf-W0yWuaS46G0CfNkkHQqjPeRhokhOeWU5ldC3At9aH9O_CJW9T-7qV/exec';
+    const cbName = 'jsonp_cb_' + Date.now();
+    window[cbName] = function(data) {
+      resolve(data);
+      delete window[cbName];
+      const s = document.getElementById(cbName);
+      if (s) s.remove();
+    };
+    const script = document.createElement('script');
+    script.id = cbName;
+    script.src = url + '?sheet=' + sheet + '&callback=' + cbName;
+    script.onerror = function() {
+      reject(new Error('Failed to load sheet: ' + sheet));
+      delete window[cbName];
+      script.remove();
+    };
+    document.body.appendChild(script);
+    setTimeout(function() {
+      if (window[cbName]) {
+        reject(new Error('Timeout loading sheet: ' + sheet));
+        delete window[cbName];
+      }
+    }, 10000);
+  });
 }
 
 // ============================================================
