@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lakyaa Creation & Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo" style="display:flex;flex-direction:row;align-items:center;gap:10px;">
+        <img src="logo.png" alt="Lakyaa Logo" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;"/>
+        <div style="display:flex;flex-direction:column;line-height:1.1;">
+          <span class="logo-main">Lakyaa</span>
+          <span class="logo-sub">Creation & Academy</span>
+        </div>
+      </a>
+      <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="blog.html">Skill Dev</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO SLIDER — SPLIT LAYOUT -->
+  <section class="hero" id="hero">
+    <div class="hero-slides">
+
+      <div class="slide active">
+        <div class="slide-left">
+          <div class="slide-content">
+            <div class="slide-tag-wrap">
+              <p class="slide-tag">Bridal Artistry</p>
+            </div>
+            <h1>Mahendi <em>Designing</em></h1>
+            <p class="slide-desc">New designs for your beautiful mahendi functions, crafted with tradition and love.</p>
+            <div class="hero-btns">
+              <a href="http://wa.me/94756430703" class="btn-gold">Contact Us</a>
+              <a href="about.html" class="btn-outline">About Us</a>
+            </div>
+          </div>
+          <div class="slide-corner-br"></div>
+        </div>
+        <div class="slide-right">
+          <img src="images/1.png" alt="Mahendi Designing"/>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-left">
+          <div class="slide-content">
+            <div class="slide-tag-wrap">
+              <p class="slide-tag">Handcrafted Jewellery</p>
+            </div>
+            <h1>Bangles & <em>Earrings</em></h1>
+            <p class="slide-desc">Customized in your favourite colors — crafted to complement your every look.</p>
+            <div class="hero-btns">
+              <a href="http://wa.me/94756430703" class="btn-gold">Contact Us</a>
+              <a href="about.html" class="btn-outline">About Us</a>
+            </div>
+          </div>
+          <div class="slide-corner-br"></div>
+        </div>
+        <div class="slide-right">
+          <img src="images/2.png" alt="Bangles and Earrings"/>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-left">
+          <div class="slide-content">
+            <div class="slide-tag-wrap">
+              <p class="slide-tag">Saree Artistry</p>
+            </div>
+            <h1>Saree Munthanai <em>Kuncham</em></h1>
+            <p class="slide-desc">Customized designing for your most special functions and celebrations.</p>
+            <div class="hero-btns">
+              <a href="http://wa.me/94756430703" class="btn-gold">Contact Us</a>
+              <a href="about.html" class="btn-outline">About Us</a>
+            </div>
+          </div>
+          <div class="slide-corner-br"></div>
+        </div>
+        <div class="slide-right">
+          <img src="images/3.png" alt="Saree Munthanai Kuncham"/>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-left">
+          <div class="slide-content">
+            <div class="slide-tag-wrap">
+              <p class="slide-tag">Embroidery Excellence</p>
+            </div>
+            <h1>Aari <em>Embroidery</em></h1>
+            <p class="slide-desc">Exquisite bridal and non-bridal blouses, crafted for your most special occasions.</p>
+            <div class="hero-btns">
+              <a href="http://wa.me/94756430703" class="btn-gold">Contact Us</a>
+              <a href="about.html" class="btn-outline">About Us</a>
+            </div>
+          </div>
+          <div class="slide-corner-br"></div>
+        </div>
+        <div class="slide-right">
+          <img src="images/4.png" alt="Aari Embroidery"/>
+        </div>
+      </div>
+
+    </div>
+    <button class="slide-arrow prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="slide-arrow next" onclick="changeSlide(1)">&#10095;</button>
+    <div class="slide-dots" id="slideDots"></div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="ornament-divider"><span>✦ ✦ ✦</span></div>
+
+  <!-- RECENT WORKS -->
+  <section class="section works-section" id="works">
+    <div class="container">
+      <div class="works-header">
+        <div class="section-header" style="text-align:left; margin-bottom:0;">
+          <p class="section-tag">Portfolio</p>
+          <h2>Our Recent <em>Works</em></h2>
+          <div class="gold-line left"></div>
+        </div>
+        <div class="gallery-nav">
+          <button class="gallery-arrow" id="galleryPrev" onclick="scrollGallery(-1)">&#10094;</button>
+          <button class="gallery-arrow" id="galleryNext" onclick="scrollGallery(1)">&#10095;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full-width scroll track -->
+    <div class="gallery-track-wrap">
+      <div class="gallery-track" id="galleryTrack">
+        <!-- Static fallback items (always shown) -->
+        <div class="gallery-card">
+          <img src="images/f27.jpeg" alt="Saree pleating"/>
+          <div class="gallery-card-overlay">
+            <span class="gallery-card-title">Saree Pleating & Ironing</span>
+            <a href="http://wa.me/94756430703" class="gallery-view-btn">View Work</a>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <img src="images/f20.jpg" alt="Silk Thread Bangle"/>
+          <div class="gallery-card-overlay">
+            <span class="gallery-card-title">Silk Thread Bangle</span>
+            <a href="http://wa.me/94756430703" class="gallery-view-btn">View Work</a>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <img src="images/f26.jpg" alt="Munthanai kuncham"/>
+          <div class="gallery-card-overlay">
+            <span class="gallery-card-title">Munthanai Kuncham</span>
+            <a href="http://wa.me/94756430703" class="gallery-view-btn">View Work</a>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <img src="images/f10.png" alt="Aariwork Blouse"/>
+          <div class="gallery-card-overlay">
+            <span class="gallery-card-title">Aariwork Blouse</span>
+            <a href="http://wa.me/94756430703" class="gallery-view-btn">View Work</a>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <img src="images/f13.jpeg" alt="Hip belts"/>
+          <div class="gallery-card-overlay">
+            <span class="gallery-card-title">Hip Belts</span>
+            <a href="http://wa.me/94756430703" class="gallery-view-btn">View Work</a>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <img src="images/f15.jpg" alt="Silk Thread Earring"/>
+          <div class="gallery-card-overlay">
+            <span class="gallery-card-title">Silk Thread Earring</span>
+            <a href="http://wa.me/94756430703" class="gallery-view-btn">View Work</a>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <img src="images/f5.png" alt="Pattu Skirt"/>
+          <div class="gallery-card-overlay">
+            <span class="gallery-card-title">Pattu Skirt & Blouse</span>
+            <a href="http://wa.me/94756430703" class="gallery-view-btn">View Work</a>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <img src="images/f2.png" alt="Designed Saree Blouse"/>
+          <div class="gallery-card-overlay">
+            <span class="gallery-card-title">Designed Saree Blouse</span>
+            <a href="http://wa.me/94756430703" class="gallery-view-btn">View Work</a>
+          </div>
+        </div>
+        <!-- Dynamic admin-uploaded images injected here by JS -->
+        <div id="dynamicGalleryItems"></div>
+        <div class="gallery-card">
+          <img src="images/f6.png" alt="Pattu Saree Frock"/>
+          <div class="gallery-card-overlay">
+            <span class="gallery-card-title">Pattu Saree Frock</span>
+            <a href="http://wa.me/94756430703" class="gallery-view-btn">View Work</a>
+          </div>
+        </div>
+      </div>
+      <!-- fade edges -->
+      <div class="gallery-fade-left"></div>
+      <div class="gallery-fade-right"></div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="ornament-divider"><span>✦ ✦ ✦</span></div>
+
+  <!-- SERVICES -->
+  <section class="section section-dark" id="services">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">What We Offer</p>
+        <h2>Our <em>Services</em></h2>
+        <div class="gold-line"></div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-img-wrap">
+            <img src="images/b1.png" alt="Tailoring"/>
+            <div class="service-num">01</div>
+          </div>
+          <div class="service-body">
+            <h3>Tailoring</h3>
+            <p>We recreate your saree into readymade saree, and stitch perfect size saree blouses, frocks, shalwars and pattu skirt set.</p>
+            <a href="services.html" class="read-more">Explore →</a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-img-wrap">
+            <img src="images/b2.png" alt="Aari Embroidery"/>
+            <div class="service-num">02</div>
+          </div>
+          <div class="service-body">
+            <h3>Aari Embroidery</h3>
+            <p>We are specialized in bridal and non-bridal blouses designing, pattu skirt blouse designing and hip belts designing.</p>
+            <a href="services.html" class="read-more">Explore →</a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-img-wrap">
+            <img src="images/b3.png" alt="Saree Modification"/>
+            <div class="service-num">03</div>
+          </div>
+          <div class="service-body">
+            <h3>Saree Modification</h3>
+            <p>We designed munthanai kunjam with beads and silk threads, full saree ironing and pleating, saree draping services.</p>
+            <a href="services.html" class="read-more">Explore →</a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-img-wrap">
+            <img src="images/b4.png" alt="Henna/Mahendi"/>
+            <div class="service-num">04</div>
+          </div>
+          <div class="service-body">
+            <h3>Henna / Mahendi</h3>
+            <p>We specialized in bridal and non-bridal mahendi designs and organic henna cones and henna products making.</p>
+            <a href="services.html" class="read-more">Explore →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="ornament-divider dark"><span>✦ ✦ ✦</span></div>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Kind Words</p>
+        <h2>What Clients <em>Say</em></h2>
+        <div class="gold-line"></div>
+      </div>
+      <div class="testimonials-wrap">
+        <div class="testimonial-slider" id="testSlider">
+          <!-- Static fallback cards -->
+          <div class="testimonial-card static-testimonial">
+            <div class="quote-mark">"</div>
+            <p>Lakyaa Creation is a one-stop destination for stunning aari embroidery and henna designs.</p>
+            <div class="client-info">
+              <img src="images/t1.png" alt="Client"/>
+              <span>Happy Client</span>
+            </div>
+          </div>
+          <div class="testimonial-card static-testimonial">
+            <div class="quote-mark">"</div>
+            <p>The team at Lakyaa Creation brought my bridal outfit vision to life with their exceptional embroidery and tailoring skills.</p>
+            <div class="client-info">
+              <img src="images/t2.png" alt="Client"/>
+              <span>Bridal Client</span>
+            </div>
+          </div>
+          <div class="testimonial-card static-testimonial">
+            <div class="quote-mark">"</div>
+            <p>Lakyaa Academy is the perfect place to learn advanced embroidery techniques and henna mixology.</p>
+            <div class="client-info">
+              <img src="images/t3.png" alt="Client"/>
+              <span>Academy Student</span>
+            </div>
+          </div>
+          <div class="testimonial-card static-testimonial">
+            <div class="quote-mark">"</div>
+            <p>Lakyaa Academy's Aari Work class taught me intricate designs effortlessly. Highly recommend it!</p>
+            <div class="client-info">
+              <img src="images/ts4.png" alt="Client"/>
+              <span>Aari Work Student</span>
+            </div>
+          </div>
+          <!-- Dynamic admin testimonials injected here -->
+        </div>
+        <div class="test-controls">
+          <button onclick="prevTest()">&#10094;</button>
+          <button onclick="nextTest()">&#10095;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-section">
+    <div class="cta-pattern"></div>
+    <div class="container cta-inner">
+      <h2>Ready to Create Something <em>Beautiful?</em></h2>
+      <p>Reach out to us on WhatsApp for bookings and enquiries.</p>
+      <a href="http://wa.me/94756430703" class="btn-gold large">📲 WhatsApp Us</a>
+    </div>
+  </section>
+
+  <!-- FEEDBACK FORM -->
+  <section class="feedback-section" id="feedback">
+
+    <!-- Background image layer -->
+    <div class="feedback-bg">
+      <div class="feedback-bg-overlay"></div>
+    </div>
+
+    <!-- Centered form container -->
+    <div class="container feedback-container">
+
+      <!-- Top header -->
+      <div class="feedback-top-header">
+        <p class="section-tag" style="color:var(--gold);">Get In Touch</p>
+        <h2 style="color:var(--cream);">Book or Share Your <em>Feedback</em></h2>
+        <div class="gold-line"></div>
+        <p class="feedback-subtitle">Fill in the form below and we'll get back to you on WhatsApp or email.</p>
+      </div>
+
+      <!-- Glass form card -->
+      <div class="feedback-card">
+
+        <!-- Row 1: Name + Phone -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fb-name">Full Name</label>
+            <input type="text" id="fb-name" placeholder="e.g. Priya Sharma" />
+          </div>
+          <div class="form-group">
+            <label for="fb-phone">Phone Number</label>
+            <input type="tel" id="fb-phone" placeholder="+94 XX XXX XXXX" />
+          </div>
+        </div>
+
+        <!-- Row 2: Email + Service -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fb-email">Email Address</label>
+            <input type="email" id="fb-email" placeholder="you@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="fb-service">Service Interested In</label>
+            <select id="fb-service">
+              <option value="" disabled selected>Select a service...</option>
+              <option>Mahendi / Henna</option>
+              <option>Aari Embroidery</option>
+              <option>Tailoring</option>
+              <option>Saree Modification</option>
+              <option>Bangles & Earrings</option>
+              <option>Academy / Skill Training</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Row 3: Date + File -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fb-date">Preferred Date</label>
+            <input type="date" id="fb-date" />
+          </div>
+          <div class="form-group">
+            <label for="fb-file">Photo Reference (optional)</label>
+            <div class="file-upload-wrap">
+              <input type="file" id="fb-file" accept="image/*" onchange="updateFileName(this)" />
+              <label for="fb-file" class="file-upload-label">
+                <span class="file-icon">📎</span>
+                <span id="file-name-text">Choose an image...</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Star Rating -->
+        <div class="form-group">
+          <label>Your Experience Rating</label>
+          <div class="star-rating" id="starRating">
+            <span class="star" data-val="1" onclick="setRating(1)">★</span>
+            <span class="star" data-val="2" onclick="setRating(2)">★</span>
+            <span class="star" data-val="3" onclick="setRating(3)">★</span>
+            <span class="star" data-val="4" onclick="setRating(4)">★</span>
+            <span class="star" data-val="5" onclick="setRating(5)">★</span>
+            <span class="rating-label" id="ratingLabel">Tap to rate</span>
+          </div>
+          <input type="hidden" id="fb-rating" value="" />
+        </div>
+
+        <!-- Message -->
+        <div class="form-group">
+          <label for="fb-msg">Your Message</label>
+          <textarea id="fb-msg" rows="4" placeholder="Tell us about your requirements or share your experience..."></textarea>
+        </div>
+
+        <!-- Submit -->
+        <button class="btn-gold feedback-submit" onclick="submitFeedback()">
+          Send Message &nbsp;✦
+        </button>
+
+        <div class="form-success" id="formSuccess">
+          🌸 Saved! Your enquiry has been recorded and sent to us on WhatsApp.
+        </div>
+
+      </div><!-- end feedback-card -->
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div style="display:flex;flex-direction:row;align-items:center;gap:10px;margin-bottom:1rem;">
+          <img src="logo.png" alt="Lakyaa Logo" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;"/>
+          <div>
+            <span class="logo-main">Lakyaa</span>
+            <span class="logo-sub">Creation & Academy</span>
+          </div>
+        </div>
+        <p>Crafting elegance for your most special moments — from bridal mahendi to aari embroidery.</p>
+      <div class="footer-social-icons">
+          <a href="http://wa.me/94756430703" target="_blank" title="WhatsApp" class="footer-social-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.556 4.116 1.529 5.845L.057 23.077a.75.75 0 00.92.919l5.356-1.488A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.713 9.713 0 01-4.951-1.355l-.355-.212-3.683 1.023 1.002-3.591-.231-.368A9.713 9.713 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100065498995364" target="_blank" title="Facebook" class="footer-social-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/lakyaa_offl" target="_blank" title="Instagram" class="footer-social-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@lakyaa_offl" target="_blank" title="TikTok" class="footer-social-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <div class="footer-contact-row">
+          <span class="footer-contact-icon">📞</span>
+          <div class="footer-contact-text">
+            <a href="http://wa.me/94756430703">+94 75 6430 703</a>
+          </div>
+        </div>
+        <div class="footer-contact-row">
+          <span class="footer-contact-icon">✉️</span>
+          <div class="footer-contact-text">
+            <a href="/cdn-cgi/l/email-protection#e88489839189898b9a8d899c818786898b898c8d8591a88f85898184c68b8785"><span class="__cf_email__" data-cfemail="600c010b1901010312050114090f0e01030104050d1920070d01090c4e030f0d">lakyaacreationacademy@gmail.com</span></a>
+          </div>
+        </div>
+        <div class="footer-contact-row">
+          <span class="footer-contact-icon">📍</span>
+          <div class="footer-contact-text">
+            Theniyambai, Valvetti,<br>Valvettiththurai, Sri Lanka.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+  
+      <p>© 2024 All Rights Reserved By <strong>Lakyaa Creation & Academy</strong></p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+
+  <!-- ============================================================
+       DYNAMIC GALLERY & TESTIMONIALS — from Google Sheets via Admin
+  ============================================================ -->
+  <script>
+  // JSONP helper — solves CORS issue when opening HTML directly from file system
+  function fetchSheet(sheet, callback) {
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbyOU45K7Ptalf-W0yWuaS46G0CfNkkHQqjPeRhokhOeWU5ldC3At9aH9O_CJW9T-7qV/exec';
+    const callbackName = 'jsonp_' + sheet + '_' + Date.now();
+    window[callbackName] = function(data) {
+      callback(data);
+      delete window[callbackName];
+      document.getElementById('jsonp_' + callbackName)?.remove();
+    };
+    const script = document.createElement('script');
+    script.id = 'jsonp_' + callbackName;
+    script.src = `${scriptUrl}?sheet=${sheet}&callback=${callbackName}`;
+    script.onerror = () => { delete window[callbackName]; script.remove(); };
+    document.body.appendChild(script);
+  }
+
+  // ---- LOAD GALLERY ----
+  fetchSheet('Gallery', function(records) {
+    if (!records || !records.length) return;
+    const container = document.getElementById('dynamicGalleryItems');
+    if (!container) return;
+    container.innerHTML = records.map(r => {
+      if (!r.ImageURL) return '';
+      return `<div class="gallery-card">
+        <img src="${r.ImageURL}" alt="${r.Title || ''}" loading="lazy"/>
+        <div class="gallery-card-overlay">
+          <span class="gallery-card-title">${r.Title || ''}</span>
+          <a href="http://wa.me/94756430703" class="gallery-view-btn">View Work</a>
+        </div>
+      </div>`;
+    }).join('');
+  });
+
+  // ---- LOAD TESTIMONIALS ----
+  fetchSheet('Testimonials', function(records) {
+    if (!records || !records.length) return;
+    const slider = document.getElementById('testSlider');
+    if (!slider) return;
+    const fragment = document.createDocumentFragment();
+    records.forEach(r => {
+      if (!r.Name || !r.Message) return;
+      const stars = parseInt(r.Rating) || 5;
+      const starStr = '★'.repeat(stars) + '☆'.repeat(5 - stars);
+      const photoHtml = r.PhotoURL
+        ? `<img src="${r.PhotoURL}" alt="${r.Name}" loading="lazy"/>`
+        : `<span style="width:44px;height:44px;border-radius:50%;background:var(--gold);color:var(--dark);display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;flex-shrink:0;">${r.Name.charAt(0).toUpperCase()}</span>`;
+      const card = document.createElement('div');
+      card.className = 'testimonial-card';
+      card.innerHTML = `<div class="quote-mark">"</div>
+        <p>${r.Message}</p>
+        <div style="color:var(--gold);font-size:0.85rem;margin:0.5rem 0 0.7rem;">${starStr}</div>
+        <div class="client-info">${photoHtml}<div><span>${r.Name}</span><small style="color:var(--cream-muted);font-size:0.75rem;display:block;">${r.Service || ''}</small></div></div>`;
+      fragment.appendChild(card);
+    });
+    slider.appendChild(fragment);
+  });
+  </script>
+</body>
+</html>
