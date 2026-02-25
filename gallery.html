@@ -47,7 +47,6 @@
       padding-right: 4px;
     }
 
-    /* Custom scrollbar */
     .gallery-wrapper::-webkit-scrollbar {
       width: 6px;
     }
@@ -61,44 +60,28 @@
       border-radius: 3px;
     }
 
+    /* JS builds columns inside this container */
     .gallery-grid {
-      column-count: 5;
-      column-gap: 0.75rem;
+      display: flex;
+      flex-direction: row;
+      gap: 0.75rem;
       margin-top: 1rem;
+      align-items: flex-start;
     }
 
-    @media (max-width: 1100px) {
-      .gallery-grid {
-        column-count: 4;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .gallery-grid {
-        column-count: 3;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .gallery-grid {
-        column-count: 2;
-      }
-    }
-
-    @media (max-width: 380px) {
-      .gallery-grid {
-        column-count: 1;
-      }
+    .gallery-col {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
     }
 
     .gallery-item {
-      break-inside: avoid;
-      margin-bottom: 0.75rem;
       position: relative;
       overflow: hidden;
       cursor: pointer;
       border: 1px solid rgba(201, 168, 76, 0.2);
-      display: inline-block;
       width: 100%;
     }
 
@@ -134,12 +117,6 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: #c9a84c;
-    }
-
-    /* hidden items */
-    .gallery-item.hidden {
-      display: none !important;
-      margin: 0 !important;
     }
 
     /* ── LIGHTBOX ── */
@@ -525,29 +502,69 @@
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script src="main.js"></script>
   <script>
-    // ── FILTER ──
+    // ── JS MASONRY COLUMN BUILDER ──
+    let allItems = [];
+    let currentFilter = 'all';
+
+    function getColCount() {
+      const w = window.innerWidth;
+      if (w <= 380) return 1;
+      if (w <= 600) return 2;
+      if (w <= 900) return 3;
+      if (w <= 1100) return 4;
+      return 5;
+    }
+
+    function buildGrid() {
+      const grid = document.getElementById('galleryGrid');
+      const cols = getColCount();
+
+      const visible = allItems.filter(item =>
+        currentFilter === 'all' || item.dataset.category === currentFilter
+      );
+
+      allItems.forEach(item => {
+        item.classList.toggle('hidden', !visible.includes(item));
+      });
+
+      grid.innerHTML = '';
+      const colEls = Array.from({ length: cols }, () => {
+        const col = document.createElement('div');
+        col.className = 'gallery-col';
+        grid.appendChild(col);
+        return col;
+      });
+
+      visible.forEach((item, i) => {
+        colEls[i % cols].appendChild(item);
+      });
+    }
+
     function filterGallery(cat, btn) {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      document.querySelectorAll('.gallery-item').forEach(item => {
-        if (cat === 'all' || item.dataset.category === cat) {
-          item.style.display = '';
-          item.classList.remove('hidden');
-        } else {
-          item.style.display = 'none';
-          item.classList.add('hidden');
-        }
-      });
+      currentFilter = cat;
+      buildGrid();
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      allItems = [...document.querySelectorAll('.gallery-item')];
+      buildGrid();
+    });
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(buildGrid, 150);
+    });
 
     // ── LIGHTBOX ──
     let lightboxItems = [];
     let lightboxIndex = 0;
 
     function openLightbox(el) {
-      const visibleItems = [...document.querySelectorAll('.gallery-item:not(.hidden)')];
-      lightboxItems = visibleItems;
-      lightboxIndex = visibleItems.indexOf(el);
+      lightboxItems = allItems.filter(item => !item.classList.contains('hidden'));
+      lightboxIndex = lightboxItems.indexOf(el);
       showLightboxImage();
       document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -570,5 +587,6 @@
       lightboxIndex = (lightboxIndex + dir + lightboxItems.length) % lightboxItems.length;
       showLightboxImage();
     }
+
+    // Close on backdrop click
   </script>
-  // Close on backdrop click
