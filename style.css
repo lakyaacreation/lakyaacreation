@@ -648,12 +648,11 @@ img { max-width: 100%; display: block; }
 .read-more:hover { color: var(--gold-light); letter-spacing: 0.2em; }
 
 /* ---- TESTIMONIALS ---- */
-.testimonials-wrap { position: relative; }
+.testimonials-wrap { position: relative; overflow: hidden; }
 .testimonial-slider {
   display: flex;
   gap: 1.5rem;
-  overflow: hidden;
-  transition: var(--transition);
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .testimonial-card {
   min-width: calc(50% - 0.75rem);
