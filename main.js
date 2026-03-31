@@ -45,24 +45,36 @@ if (slides.length) {
 // ---- TESTIMONIAL SLIDER ----
 let testIndex = 0;
 const testSlider = document.getElementById('testSlider');
-const testCards = testSlider ? testSlider.querySelectorAll('.testimonial-card') : [];
+
+function getTestCards() {
+  return testSlider ? Array.from(testSlider.querySelectorAll('.testimonial-card')) : [];
+}
 
 function updateTestSlider() {
   if (!testSlider) return;
-  const cardWidth = testCards[0]?.offsetWidth + 24; // 24 = gap
+  const cards = getTestCards();
+  if (!cards.length) return;
+  const card = cards[0];
+  const style = window.getComputedStyle(testSlider);
+  const gap = parseFloat(style.gap) || 24;
+  const cardWidth = card.getBoundingClientRect().width + gap;
   testSlider.style.transform = `translateX(-${testIndex * cardWidth}px)`;
 }
 
 function nextTest() {
-  if (!testCards.length) return;
-  const maxIndex = window.innerWidth < 640 ? testCards.length - 1 : testCards.length - 2;
+  const cards = getTestCards();
+  if (!cards.length) return;
+  const visible = window.innerWidth < 640 ? 1 : 2;
+  const maxIndex = cards.length - visible;
   testIndex = testIndex >= maxIndex ? 0 : testIndex + 1;
   updateTestSlider();
 }
 
 function prevTest() {
-  if (!testCards.length) return;
-  const maxIndex = window.innerWidth < 640 ? testCards.length - 1 : testCards.length - 2;
+  const cards = getTestCards();
+  if (!cards.length) return;
+  const visible = window.innerWidth < 640 ? 1 : 2;
+  const maxIndex = cards.length - visible;
   testIndex = testIndex <= 0 ? maxIndex : testIndex - 1;
   updateTestSlider();
 }
