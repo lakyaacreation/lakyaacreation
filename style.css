@@ -63,7 +63,7 @@ img { max-width: 100%; display: block; }
 }
 .section-dark h2 { color: var(--gold-light); }
 .section-dark h2 em { color: var(--gold); }
-.section-dark p { color: var(--gold-pale); opacity: 0.85; }
+.section-dark p { color: var(--gold-pale); opacity: 1; }
 .section-dark h3 { color: var(--gold-light); }
 
 /* ---- SECTION HEADER ---- */
@@ -151,7 +151,7 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(245, 230, 192, 0.7);
+  color: rgba(245, 230, 192, 0.88);
   transition: var(--transition);
   position: relative;
   padding: 0.4rem 1rem;
@@ -335,7 +335,7 @@ img { max-width: 100%; display: block; }
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.1rem;
   font-weight: 300;
-  color: rgba(245,230,192,0.75);
+  color: rgba(245,230,192,0.90);
   margin-bottom: 2rem;
   line-height: 1.65;
   max-width: 380px;
@@ -776,7 +776,7 @@ img { max-width: 100%; display: block; }
 .footer-brand .logo-sub { display: block; margin-bottom: 1.25rem; }
 .footer-brand p {
   font-size: 1rem;
-  color: rgba(245,230,192,0.55);
+  color: rgba(245,230,192,0.80);
   line-height: 1.8;
   max-width: 300px;
 }
@@ -805,7 +805,7 @@ img { max-width: 100%; display: block; }
 .footer-links a {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.05rem;
-  color: rgba(245,230,192,0.65);
+  color: rgba(245,230,192,0.85);
   transition: var(--transition);
   display: inline-flex;
   align-items: center;
@@ -838,11 +838,11 @@ img { max-width: 100%; display: block; }
 .footer-contact-text {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1rem;
-  color: rgba(245,230,192,0.65);
+  color: rgba(245,230,192,0.85);
   line-height: 1.55;
 }
 .footer-contact-text a {
-  color: rgba(245,230,192,0.65);
+  color: rgba(245,230,192,0.85);
   transition: var(--transition);
 }
 .footer-contact-text a:hover { color: var(--gold-light); }
@@ -855,7 +855,7 @@ img { max-width: 100%; display: block; }
 .footer-contact p {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1rem;
-  color: rgba(245,230,192,0.65);
+  color: rgba(245,230,192,0.85);
   line-height: 1.6;
   margin-bottom: 0.75rem;
   display: flex;
@@ -863,7 +863,7 @@ img { max-width: 100%; display: block; }
   gap: 0.65rem;
 }
 .footer-contact p a {
-  color: rgba(245,230,192,0.65);
+  color: rgba(245,230,192,0.85);
   transition: var(--transition);
 }
 .footer-contact p a:hover { color: var(--gold-light); }
@@ -879,9 +879,9 @@ img { max-width: 100%; display: block; }
   font-family: 'Raleway', sans-serif;
   font-size: 0.72rem;
   letter-spacing: 0.08em;
-  color: rgba(245,230,192,0.35);
+  color: rgba(245,230,192,0.65);
 }
-.footer-bottom strong { color: rgba(245,230,192,0.55); font-weight: 600; }
+.footer-bottom strong { color: rgba(245,230,192,0.85); font-weight: 600; }
 
 /* ---- PAGE HERO ---- */
 .page-hero {
@@ -1250,7 +1250,7 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(245,230,192,0.4);
+  color: rgba(245,230,192,0.70);
   margin-left: 0.75rem;
   transition: var(--transition);
 }
